@@ -6,6 +6,14 @@ public class Cliente {
 	private String email;
 	private String telefone;
 	private boolean ativo = false;
+	
+	
+	public Cliente(String nome, String email, String telefone) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -30,6 +38,11 @@ public class Cliente {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	public void ativar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 
