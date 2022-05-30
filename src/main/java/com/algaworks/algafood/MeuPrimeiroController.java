@@ -10,7 +10,7 @@ import com.algaworks.algafood.di.service.AtivacaoClienteService;
 @Controller /* é um bean gerenciados pelos spring */
 public class MeuPrimeiroController {
 
-	private AtivacaoClienteService ativacaoClienteService;
+	private final AtivacaoClienteService ativacaoClienteService;
 
 	public MeuPrimeiroController(AtivacaoClienteService ativacaoClienteService) {
 		this.ativacaoClienteService = ativacaoClienteService;

@@ -5,13 +5,14 @@ import org.springframework.context.annotation.Configuration;
 
 import com.algaworks.algafood.di.notificacao.NotificadorEmail;
 
-@Configuration
+//@Configuration
 public class NotificacaoConfig {
 
-	@Bean
+	//@Bean
 	public NotificadorEmail notificadorEmail(){
-		NotificadorEmail notificador= new NotificadorEmail("stmp.algamail.com.br");
-		notificador.setCaixaAlta(true);
-		return notificador;
+		//NotificadorEmail notificador= new NotificadorEmail("stmp.algamail.com.br");
+		//notificador.setCaixaAlta(true);
+		//return notificador;
+		return null;
 	}
 }
