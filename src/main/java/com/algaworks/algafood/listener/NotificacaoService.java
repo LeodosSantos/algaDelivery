@@ -6,20 +6,21 @@ import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.di.notificacao.NivelUrgencia;
 import com.algaworks.algafood.di.notificacao.Notificador;
+import com.algaworks.algafood.di.notificacao.TipoDoNotificador;
 import com.algaworks.algafood.di.service.ClienteAtivadoEvent;
 
 @Component
 public class NotificacaoService {
 	
-	@TipoNotificado(NivelUrgencia.URGENTE)
+	@TipoDoNotificador(Value = NivelUrgencia.SEM_URGENCIA)
 	@Autowired
 	private Notificador notificador;
-	
+		
 	@EventListener
 	public void clienteAtivadoListener(ClienteAtivadoEvent event) {
-		notificador.notificar(event.getCliente(), :"");
+		notificador.notificar(event.getCliente(), " Seu cadastro no sistema agora está ativo");
 		
-		System.out.println("cliente" + event.getCliente().getNome() + " agora está ativo");
+
 		
 		
 	}

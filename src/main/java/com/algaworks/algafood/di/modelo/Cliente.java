@@ -39,7 +39,7 @@ public class Cliente {
 		this.ativo = ativo;
 	}
 	public void ativar() {
-		// TODO Auto-generated method stub
+		this.ativo=true;
 		
 	}
 	
