@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tab_cozinhas")
+@Table
 public class Cozinha {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	
-	@Column(name="nom_cozinha")
+	@Column
 	String nome;
 
 	public long getId() {

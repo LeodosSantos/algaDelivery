@@ -10,14 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tab_restaurante")
+@Table
 public class Restaurante {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="nom_restaurante")
+	@Column
 	private String nome;
 	
 	@Column(name="taxa_frete")
