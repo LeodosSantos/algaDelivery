@@ -30,7 +30,7 @@ public class CadastroCozinha {
 	
 	// adicional no banco de dados um cadastro de cozinha
 	@Transactional
-	public Cozinha adicionar(Cozinha cozinha) {
+	public Cozinha salvar(Cozinha cozinha) {
 		return manager.merge(cozinha);
 	}
 
