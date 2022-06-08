@@ -1,20 +1,20 @@
-package com.algaworks.algafood.jpa;
+package com.algaworks.algafood.infrastructure.repository;
 
 import java.util.List;
 
-import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 
 @Component
-public class CadastroCozinha {
+public class CozinhaRepositoryImpl implements CozinhaRepository {
 
+	
 	@PersistenceContext
 	EntityManager manager;
 // gera uma lista de objetos da classe Cozinha
@@ -23,21 +23,24 @@ public class CadastroCozinha {
 
 	}
 	//busca um unico objeto na classe cozinha
-	
-	public Cozinha buscar(long id) {
+	@Override
+	public Cozinha buscar(Long id) {
 		return manager.find(Cozinha.class, id);
 	}
 	
 	// adicional no banco de dados um cadastro de cozinha
 	@Transactional
+	@Override
 	public Cozinha salvar(Cozinha cozinha) {
 		return manager.merge(cozinha);
 	}
 
 	@Transactional
+	@Override
 	public void remover(Cozinha cozinha) {
 		cozinha = buscar(cozinha.getId());
 		manager.remove(cozinha);
 		
 	}
+
 }
