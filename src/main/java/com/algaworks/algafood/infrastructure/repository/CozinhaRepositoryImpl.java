@@ -18,27 +18,27 @@ public class CozinhaRepositoryImpl implements CozinhaRepository {
 	@PersistenceContext
 	EntityManager manager;
 // gera uma lista de objetos da classe Cozinha
-	public List<Cozinha> listar() {
+	public List<Cozinha> todas() {
 		return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
 
 	}
 	//busca um unico objeto na classe cozinha
 	@Override
-	public Cozinha buscar(Long id) {
+	public Cozinha porId(Long id) {
 		return manager.find(Cozinha.class, id);
 	}
 	
 	// adicional no banco de dados um cadastro de cozinha
 	@Transactional
 	@Override
-	public Cozinha salvar(Cozinha cozinha) {
+	public Cozinha adicionar(Cozinha cozinha) {
 		return manager.merge(cozinha);
 	}
 
 	@Transactional
 	@Override
 	public void remover(Cozinha cozinha) {
-		cozinha = buscar(cozinha.getId());
+		cozinha = porId(cozinha.getId());
 		manager.remove(cozinha);
 		
 	}

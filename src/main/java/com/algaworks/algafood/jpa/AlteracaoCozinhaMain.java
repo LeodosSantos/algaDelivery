@@ -18,13 +18,13 @@ public class AlteracaoCozinhaMain {
 			.web(WebApplicationType.NONE)
 			.run(args);
 		
-		CozinhaRepository cadastroCozinha = applicationContext.getBean(CozinhaRepository.class);
+		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 		
 		Cozinha cozinha = new Cozinha();
 		cozinha.setId(1L);
 		cozinha.setNome("Brasileira"); 
 		
-		cadastroCozinha.salvar(cozinha);
+		cozinhaRepository.adicionar(cozinha);
 		
 	
 	}
