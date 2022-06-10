@@ -5,11 +5,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
-import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 
-public class InclusaoCozinhaMain {
+public class BuscaRestauranteMain {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -18,17 +18,10 @@ public class InclusaoCozinhaMain {
 		
 		RestauranteRepository restauranteRepository = applicationContext.getBean(RestauranteRepository.class);
 		
-		Restaurante restaurante1 = new Restaurante();
-		restaurante1.setNome ("Pé Sujo");
+		Restaurante restaurante = restauranteRepository.porId(1L);
 		
-		Restaurante restaurante2 = new Restaurante();
-		restaurante2.setNome ("Sake na Vêia");
+			System.out.println(restaurante.getNome());
 		
-		restaurante1 = restauranteRepository.adicionar(restaurante1);
-		restaurante2 = restauranteRepository.adicionar(restaurante2);
-		
-		System.out.printf("%d - %s\n", restaurante1.getId(), restaurante1.getNome());
-		System.out.printf("%d - %s\n", restaurante2.getId(), restaurante2.getNome());
 	}
 
 }
