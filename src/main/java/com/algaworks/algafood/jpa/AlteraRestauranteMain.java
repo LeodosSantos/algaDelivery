@@ -1,5 +1,7 @@
 package com.algaworks.algafood.jpa;
 
+import java.math.BigDecimal;
+
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
@@ -22,7 +24,7 @@ public class AlteraRestauranteMain {
 		Restaurante restaurante = new Restaurante();
 		restaurante.setId(3L);
 		restaurante.setNome("Mineirinho");
-		restaurante.setTaxaFrete(7.7);
+		restaurante.setTaxaFrete(new BigDecimal("7.7"));
 		
 	}
 	

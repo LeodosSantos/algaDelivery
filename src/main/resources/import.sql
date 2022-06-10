@@ -1,6 +1,10 @@
-insert into cozinha (nome) values ('Tailandesa');
-insert into cozinha (nome) values ('Indiana');
-insert into restaurante (nome, taxa_frete) values('thaYFood', 5.5);
-insert into restaurante (nome, taxa_frete) values ('Lion', 6.6);
+insert into cozinha (id, nome) values (1, 'Tailandesa');
+insert into cozinha (id, nome) values (2, 'Indiana');
+
+insert into restaurante (nome, taxa_frete, cozinha_id) values ('Thai Goumert', 10,1);
+insert into restaurante (nome, taxa_frete, cozinha_id) values ('Thai Delivery', 9.5 ,1);
+insert into restaurante (nome, taxa_frete, cozinha_id) values ('Tuk Tuk Comida Indiana', 15, 2);
+insert into restaurante (nome, taxa_frete, cozinha_id) values('thaYFood', 5.5, 1);
+insert into restaurante (nome, taxa_frete, cozinha_id) values ('Lion', 6.6, 2);
 
 
