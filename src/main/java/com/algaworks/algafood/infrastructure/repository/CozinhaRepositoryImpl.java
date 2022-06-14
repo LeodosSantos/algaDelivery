@@ -18,7 +18,7 @@ public class CozinhaRepositoryImpl implements CozinhaRepository {
 	@PersistenceContext
 	EntityManager manager;
 // gera uma lista de objetos da classe Cozinha
-	public List<Cozinha> todas() {
+	public List<Cozinha> listar() {
 		return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
 
 	}
