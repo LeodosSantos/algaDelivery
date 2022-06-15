@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@JsonRootName("gastronomia")
+@JsonRootName("cozinhas")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -25,8 +25,6 @@ public class Cozinha {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	
-	//@JsonIgnore
-	@JsonProperty("titulo")
 	@Column(nullable = true)
 	private String nome;
 
