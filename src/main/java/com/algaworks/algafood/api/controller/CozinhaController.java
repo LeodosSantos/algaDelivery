@@ -25,25 +25,19 @@ public class CozinhaController {
 	private CozinhaRepository cozinhaRepository;
 
 	@GetMapping (produces = MediaType.APPLICATION_JSON_VALUE)// requisições com ret http serão encaminhada para esse método
-	public List<Cozinha> listar1() {
+	public List<Cozinha> listar() {
 		System.out.println("Listar1");
 		return cozinhaRepository.listar();
 	}
-	
-	@GetMapping  (produces = MediaType.APPLICATION_XML_VALUE)// requisições com ret http serão encaminhada para esse método
-	public List<Cozinha> listar2() {
-		System.out.println("Listar2");
-		return cozinhaRepository.listar();
+
+
+	@GetMapping("/{cozinhaId}") // concatenando ---> /cozinhas/{cozinhaId} public
+	Cozinha buscar(@PathVariable Long cozinhaId){ 
+		return cozinhaRepository.buscar(cozinhaId);
 	}
 	
-	/*
-	 * @GetMapping (produces = MediaType.APPLICATION_XML_VALUE ) public
-	 * CozinhasXmlWrapper listarXml() { return new
-	 * CozinhasXmlWrapper(cozinhaRepository.listar()); }
-	 * 
-	 * @GetMapping("/{cozinhaId}") // concatenando ---> /cozinhas/{cozinhaId} public
-	 * Cozinha buscar(@PathVariable Long cozinhaId) { return
-	 * cozinhaRepository.buscar(cozinhaId); }
-	 */
-
+	@GetMapping (produces = MediaType.APPLICATION_XML_VALUE )
+	public CozinhasXmlWrapper listarXml() {
+		return new CozinhasXmlWrapper(cozinhaRepository.listar());
+		}
 }
