@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.algafood.api.model.CozinhasXmlWrapper;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 
 //@Controller-- componente spring controlador -- pode apagar
 //@ResponseBody-- quando for acionado algum método get irá ter uma resposta -- pode apaga
@@ -31,6 +32,9 @@ public class CozinhaController {
 
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
+	
+	@Autowired
+	private CadastroCozinhaService cadastrocozinhaService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE) // requisições com ret http serão encaminhada para esse
 																// método
@@ -67,6 +71,7 @@ public class CozinhaController {
 
 	@GetMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
+		
 		Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
 
 		if (cozinha != null) {
@@ -79,7 +84,7 @@ public class CozinhaController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void adicionar(@RequestBody Cozinha cozinha) {
-		cozinhaRepository.adicionar(cozinha);
+		cadastrocozinhaService.adicionar(cozinha);
 	}
 
 	@PutMapping("/{cozinhaId}")
