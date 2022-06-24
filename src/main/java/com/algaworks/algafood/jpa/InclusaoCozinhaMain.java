@@ -24,8 +24,8 @@ public class InclusaoCozinhaMain {
 		Restaurante restaurante2 = new Restaurante();
 		restaurante2.setNome ("Sake na Vêia");
 		
-		restaurante1 = restauranteRepository.adicionar(restaurante1);
-		restaurante2 = restauranteRepository.adicionar(restaurante2);
+		restaurante1 = restauranteRepository.salvar(restaurante1);
+		restaurante2 = restauranteRepository.salvar(restaurante2);
 		
 		System.out.printf("%d - %s\n", restaurante1.getId(), restaurante1.getNome());
 		System.out.printf("%d - %s\n", restaurante2.getId(), restaurante2.getNome());
