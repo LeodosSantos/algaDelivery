@@ -38,7 +38,7 @@ public class CozinhaController {
 	private CadastroCozinhaService cadastrocozinhaService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE) // requisições com ret http serão encaminhada para esse
-																// método
+														// método
 	public List<Cozinha> listar() {
 		System.out.println("Listar1");
 		return cozinhaRepository.listar();
