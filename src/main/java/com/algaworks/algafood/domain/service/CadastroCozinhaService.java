@@ -23,7 +23,7 @@ public class CadastroCozinhaService {
 	private CozinhaRepository cozinhaRepository;
 
 	public Cozinha adicionar(Cozinha cozinha) {
-		return cozinhaRepository.adicionar(cozinha);
+		return cozinhaRepository.salvar(cozinha);
 	}
 
 	public void excluir(long cozinhaId) {
