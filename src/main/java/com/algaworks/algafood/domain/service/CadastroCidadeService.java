@@ -22,25 +22,23 @@ public class CadastroCidadeService {
 				// busca
 	private EstadoRepository estadoRepository;
 
-	public Cidade salvar(Cidade cidade) {
+	public Cidade salvar(Cidade cidade) { 			//Aqui estamos usando o método findById para obter o Estado correspondente.
+
+													//Como o retorno desse método é um Optional, utilizaremos o método "orElseThrow" para tratar caso não seja encontrado nenhum Estado correspondente.
 		Long estadoId = cidade.getEstado().getId();
-		Estado estado = estadoRepository.buscar(estadoId);
-
-		if (estado == null) {
-
-			throw new EntidadeNaoEncontradaException(
-					String.format("Não existe cadastro de estado com código %d", estadoId));
-		}
 		
+		Estado estado = estadoRepository.findById(estadoId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(
+						String.format("Não existe cadastro de estado com código %d", estadoId)));
 		cidade.setEstado(estado);
 
-		return cidadeRepository.salvar(cidade);
+		return cidadeRepository.save(cidade);
 
 	}
 	
 	public void excluir(Long cidadeId) {
         try {
-            cidadeRepository.remover(cidadeId);
+            cidadeRepository.deleteById(cidadeId);
             
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(

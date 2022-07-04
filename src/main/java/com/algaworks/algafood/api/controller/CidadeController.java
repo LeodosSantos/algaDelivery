@@ -1,6 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,16 @@ public class CidadeController {
 
 	@GetMapping
 	public List<Cidade> listar() {
-		return cidadeRepository.listar();
+		return cidadeRepository.findAll();
 	}
 	
 	@GetMapping("/{cidadeId}")
 	public ResponseEntity<Cidade> buscar(@PathVariable Long cidadeId ){
 		
-		Cidade cidade = cidadeRepository.buscar(cidadeId);
-		
-		if (cidade != null) {
-			return ResponseEntity.ok(cidade);
+		Optional<Cidade> cidade = cidadeRepository.findById(cidadeId); // Esse método nos retorna um Optional, portanto precisamos adpatar nosso código para isso.
+
+		if (cidade.isPresent()) {
+			return ResponseEntity.ok(cidade.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
@@ -63,7 +64,8 @@ public class CidadeController {
 	@PutMapping("/{cidadeAId}")
 	public ResponseEntity<Cidade> atualizar(@PathVariable Long cidadeId,
 			@RequestBody Cidade cidade) {
-		Cidade cidadeAtual = cidadeRepository.buscar(cidadeId);
+		Cidade cidadeAtual = cidadeRepository.findById(cidadeId).orElse(null);
+				
 		
 		if (cidadeAtual != null) {
 			BeanUtils.copyProperties(cidade, cidadeAtual, "id");
