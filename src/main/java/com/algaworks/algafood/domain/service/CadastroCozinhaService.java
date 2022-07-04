@@ -22,13 +22,13 @@ public class CadastroCozinhaService {
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
 
-	public Cozinha adicionar(Cozinha cozinha) {
-		return cozinhaRepository.salvar(cozinha);
+	public Cozinha salvar(Cozinha cozinha) {
+		return cozinhaRepository.save(cozinha);
 	}
 
 	public void excluir(long cozinhaId) {
 		try {
-			cozinhaRepository.remover(cozinhaId);
+			cozinhaRepository.deleteById(cozinhaId);
 
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(

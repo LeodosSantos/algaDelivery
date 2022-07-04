@@ -15,20 +15,17 @@ public class CadastroRestauranteService {
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 
-	@Autowired // eu preciso injetar cozinha para conseguir tratar: fazer uma consulta uma
+	@Autowired 	// eu preciso injetar cozinha para conseguir tratar: fazer uma consulta uma
 				// busca
-	CozinhaRepository cozinhaRepository;
+	private CozinhaRepository cozinhaRepository;
 
 	public Restaurante Salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
-		Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-
-		if (cozinha == null) {
-
-			throw new EntidadeNaoEncontradaException(
-					String.format("Não existi cadastro de cozinha com código %d ", cozinhaId));
-		}
 		
+		Cozinha cozinha = cozinhaRepository.findById(cozinhaId)
+				.orElseThrow (() -> new EntidadeNaoEncontradaException((
+					String.format("Não existi cadastro de cozinha com código %d ", cozinhaId))));
+
 		restaurante.setCozinha(cozinha);
 
 		return restauranteRepository.salvar(restaurante);
