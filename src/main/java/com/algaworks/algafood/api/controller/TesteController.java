@@ -62,7 +62,7 @@ public class TesteController {
 	}
 	
 	@GetMapping("/restautantes/por-nome-e-frete")
-	public List<Restaurante> restaurantesTop2PorNome(String nome){
+	public List<Restaurante> restaurantesPorNomeFrete(String nome){
 		return restauranteRepository.findTop2ByNomeContaining(nome);
 	}
 	
