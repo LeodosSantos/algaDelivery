@@ -24,4 +24,7 @@ insert into cidade (nome, estado_id) values ('Sao Paulo', 1);
 insert into cidade (nome, estado_id) values ('Petropolis', 2);
 insert into cidade (nome, estado_id) values('Rio de Janeiro', 2);
 
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1, 1), (1, 2), (1, 3),(2, 3), (3, 2),(3,3);
+
+
 
