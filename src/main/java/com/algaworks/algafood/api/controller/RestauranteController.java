@@ -69,8 +69,8 @@ public class RestauranteController {
 		try {
 			Restaurante restauranteAtual = restauranteRepository.findById(restauranteId).orElse(null);
 
-			if (restauranteAtual != null) {
-				BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasPagamento","endereco");
+			if (restauranteAtual != null) { //Não permite que seja deletados os dados informados, copiando assim quando alterado outros dados.
+				BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasPagamento","endereco","dataCadastro");
 
 				restauranteAtual = CadastroRestauranteService.Salvar(restauranteAtual);
 				return ResponseEntity.ok(restauranteAtual);

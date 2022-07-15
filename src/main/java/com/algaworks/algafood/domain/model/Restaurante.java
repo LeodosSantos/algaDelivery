@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -50,11 +51,11 @@ public class Restaurante {
 	private Endereco endereco;
 	
 	@CreationTimestamp
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "DateTime")
 	private LocalDateTime datacadastro;
 	
 	@UpdateTimestamp
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "DateTime")
 	private LocalDateTime dataAtualizada;
 	
 	@JsonIgnore
@@ -62,5 +63,15 @@ public class Restaurante {
 	@JoinTable(name = "restaurante_forma_pagamento", joinColumns = @JoinColumn (name = "restaurante_id"),
 			inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
 	private List<FormaPagamento> formasPagamento = new ArrayList<>();
+	
+	/*
+	 * @JsonIgnore
+	 * 
+	 * @OneToMany
+	 * 
+	 * @JoinColumn(nullable = false) private List<Produto> produtos = new
+	 * ArrayList<>();
+	 */
+	
 
 }
