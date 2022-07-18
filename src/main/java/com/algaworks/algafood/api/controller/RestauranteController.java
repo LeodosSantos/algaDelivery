@@ -34,11 +34,38 @@ public class RestauranteController {
 
 	@Autowired
 	private CadastroRestauranteService CadastroRestauranteService;
+	
+	
 
 	@GetMapping
 	public List<Restaurante> listar() {
-		return restauranteRepository.findAll();
+	return restauranteRepository.findAll();
+	
 	}
+//	
+//	@GetMapping
+//	public List<Restaurante> listar() {
+//		List<Restaurante> restaurantes = restauranteRepository.findAll();
+//		
+//		System.out.println("O nome da cozinha é: ");
+//		System.out.println(restaurantes.get(0).getCozinha().getNome());
+//		
+//		return restaurantes;
+//	}
+
+//	@GetMapping
+//	public List<Restaurante> listar() {
+//		List<Restaurante> restaurantes = restauranteRepository.findAll();
+//		
+//		System.out.println(restaurantes.get(0).getNome());
+//		restaurantes.get(0).getFormasPagamento().forEach(System.out::println);
+//		
+//		System.out.println(restaurantes.get(1).getNome());
+//		restaurantes.get(1).getFormasPagamento().forEach(System.out::println);
+//		
+//		return restaurantes;
+//		
+//	}
 
 	@GetMapping("/{restauranteId}")
 	public ResponseEntity<Restaurante> buscar(@PathVariable Long restauranteId) {
